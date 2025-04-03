@@ -13,8 +13,11 @@ import "components"
 PlasmaExtras.Representation {
     readonly property var appletInterface: plasmoid.self
 
-    Layout.preferredWidth: Kirigami.Units.gridUnit * 24
-    Layout.preferredHeight: Kirigami.Units.gridUnit * 24
+    // Layout.preferredWidth: Kirigami.Units.gridUnit * 24
+    // Layout.preferredHeight: Kirigami.Units.gridUnit * 24
+    // Layout.minimumWidth: Kirigami.Units.gridUnit * 15
+    // Layout.maximumWidth: Kirigami.Units.gridUnit * 15
+    Layout.preferredWidth: Kirigami.Units.gridUnit * 20 //Layout.minimumWidth
 
     Loader {
         id: gridLoader
@@ -33,13 +36,12 @@ PlasmaExtras.Representation {
                 readonly property int dynamicCellWidth: Math.max(width / dynamicColumnNumber, minItemWidth)
                 readonly property int minItemWidth: Kirigami.Units.iconSizes.enormous
 
-                cellWidth: dynamicCellWidth
-                cellHeight: minItemWidth / 2
+                cellWidth: 60
+                cellHeight: 25
                 model: itemModel
-                delegate: Entity {
-                    width: GridView.view.cellWidth - Kirigami.Units.smallSpacing
-                    height: GridView.view.cellHeight - Kirigami.Units.smallSpacing
-                    contentItem: EntityDelegateTile {}
+                delegate: EntityDelegateTile {
+                    width: 60
+                    height: 25
                 }
             }
         }
