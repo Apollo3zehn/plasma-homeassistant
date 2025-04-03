@@ -6,17 +6,41 @@
   <kcfgfile name=""/>
 
   <group name="General">
-    <entry name="url" type="string">
+    <entry name="url" type="String">
       <default></default>
     </entry>
-    <entry name="flat" type="bool">
+    <entry name="flat" type="Bool">
       <default>false</default>
+    </entry>
+    <entry name="fontSize" type="Int">
+      <default>10</default>
+    </entry>
+    <entry name="iconSize" type="Int">
+      <default>-1</default>
+    </entry>
+    <entry name="widgetWidth" type="Double">
+      <default>-1</default>
+    </entry>
+    <entry name="widgetHeight" type="Double">
+      <default>-1</default>
+    </entry>
+    <entry name="cellWidth" type="Double">
+      <default>120</default>
+    </entry>
+    <entry name="cellHeight" type="Double">
+      <default>40</default>
+    </entry>
+    <entry name="gridHorizontalSpacing" type="Double">
+      <default>-1</default>
+    </entry>
+    <entry name="gridVerticalSpacing" type="Double">
+      <default>-1</default>
     </entry>
   </group>
   <group name="Items">
-    <entry name="items" type="string">
+    <entry name="items" type="String">
       <default>[]</default>
     </entry>
-    <entry name="autoBackupFile" type="string"></entry>
+    <entry name="autoBackupFile" type="String"></entry>
   </group>
 </kcfg>

@@ -11,13 +11,12 @@ import org.kde.kirigami as Kirigami
 import "components"
 
 PlasmaExtras.Representation {
-    readonly property var appletInterface: plasmoid.self
 
-    // Layout.preferredWidth: Kirigami.Units.gridUnit * 24
-    // Layout.preferredHeight: Kirigami.Units.gridUnit * 24
-    // Layout.minimumWidth: Kirigami.Units.gridUnit * 15
-    // Layout.maximumWidth: Kirigami.Units.gridUnit * 15
-    Layout.preferredWidth: Kirigami.Units.gridUnit * 20 //Layout.minimumWidth
+    readonly property var preferredWidgetWidth: plasmoid.configuration.widgetWidth
+    readonly property var preferredWidgetHeight: plasmoid.configuration.widgetHeight
+
+    Layout.preferredWidth: preferredWidgetWidth < 0 ? Kirigami.Units.gridUnit * 24 : preferredWidgetWidth
+    Layout.preferredHeight: preferredWidgetHeight < 0 ? Kirigami.Units.gridUnit * 24 : preferredWidgetHeight
 
     Loader {
         id: gridLoader
@@ -36,12 +35,14 @@ PlasmaExtras.Representation {
                 readonly property int dynamicCellWidth: Math.max(width / dynamicColumnNumber, minItemWidth)
                 readonly property int minItemWidth: Kirigami.Units.iconSizes.enormous
 
-                cellWidth: 60
-                cellHeight: 25
+                cellWidth: plasmoid.configuration.cellWidth
+                cellHeight: plasmoid.configuration.cellHeight
                 model: itemModel
                 delegate: EntityDelegateTile {
-                    width: 60
-                    height: 25
+                    readonly property var gridHorizontalSpacing: plasmoid.configuration.gridHorizontalSpacing
+                    readonly property var gridVerticalSpacing: plasmoid.configuration.gridVerticalSpacing
+                    width: plasmoid.configuration.cellWidth - (gridHorizontalSpacing < 0 ? Kirigami.Units.smallSpacing : gridHorizontalSpacing)
+                    height: plasmoid.configuration.cellHeight - (gridVerticalSpacing < 0 ? Kirigami.Units.smallSpacing : gridVerticalSpacing)
                 }
             }
         }

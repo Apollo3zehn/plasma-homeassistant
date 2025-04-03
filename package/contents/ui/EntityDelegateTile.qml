@@ -16,7 +16,9 @@ GridLayout {
     DynamicIcon {
         name: model.icon
         Layout.rowSpan: model.show_name ? 2 : 1
-        Layout.preferredWidth: Kirigami.Units.iconSizes.small
+        Layout.preferredWidth: plasmoid.configuration.iconSize < 0
+            ? Kirigami.Units.iconSizes.medium
+            : plasmoid.configuration.iconSize
     }
 
     PlasmaExtras.Heading {
@@ -26,7 +28,7 @@ GridLayout {
         elide: Text.ElideRight
         visible: !!text
         wrapMode: Text.NoWrap
-        font.pixelSize: 8
+        font.pointSize: plasmoid.configuration.fontSize
         font.weight: Font.Bold
         Layout.fillWidth: true
     }
@@ -36,7 +38,7 @@ GridLayout {
         text: name
         elide: Text.ElideRight
         visible: model.show_name
-        font.pixelSize: 8
+        font.pointSize: plasmoid.configuration.fontSize
         Layout.alignment: model.value ? Qt.AlignTop : 0
         Layout.fillWidth: true
     }
