@@ -25,10 +25,10 @@
       <default>-1</default>
     </entry>
     <entry name="cellWidth" type="Double">
-      <default>120</default>
+      <default>200</default>
     </entry>
     <entry name="cellHeight" type="Double">
-      <default>40</default>
+      <default>60</default>
     </entry>
     <entry name="gridHorizontalSpacing" type="Double">
       <default>-1</default>
