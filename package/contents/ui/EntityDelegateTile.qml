@@ -24,7 +24,7 @@ GridLayout {
     PlasmaExtras.Heading {
         id: stateValue
         level: 4
-        text: model.value === 'unavailable ' ? 'N/A' : model.value
+        text: model.value.startsWith('unavailable') ? 'N/A' : model.value
         elide: Text.ElideRight
         visible: !!text
         wrapMode: Text.NoWrap

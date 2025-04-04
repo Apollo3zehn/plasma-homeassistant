@@ -68,6 +68,9 @@ KCM.ScrollViewKCM {
                 Label {
                     text: i18n("Auto backup")
                 }
+                Label {
+                    text: plasmoid.formFactor
+                }
                 Kirigami.ActionTextField {
                     id: autoBackupFileField
                     readOnly: true

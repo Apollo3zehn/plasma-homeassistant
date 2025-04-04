@@ -7,7 +7,6 @@ import org.kde.kirigami as Kirigami
 PlasmaComponents3.Button {
     id: control
     down: model.active
-    flat: plasmoid.configuration.flat
     enabled: !!actions.length
     clip: true
     readonly property var actions: actionLoaders.filter(c => c.item)
@@ -75,11 +74,11 @@ PlasmaComponents3.Button {
             when: plasmoid.configuration.flat
             PropertyChanges 
             { 
-                target: control
-                leftPadding: 0
-                topPadding: 0
-                rightPadding: 0
-                bottomPadding: 0
+                control.flat: true
+                control.leftPadding: 0
+                control.topPadding: 0
+                control.rightPadding: 0
+                control.bottomPadding: 0
             }
         }
     ]

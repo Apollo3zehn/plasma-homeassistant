@@ -6,36 +6,24 @@
   <kcfgfile name=""/>
 
   <group name="General">
-    <entry name="url" type="String">
-      <default></default>
+    <entry name="firstStart" type="Bool">
+      <default>true</default>
     </entry>
-    <entry name="flat" type="Bool">
-      <default>false</default>
-    </entry>
-    <entry name="fontSize" type="Int">
-      <default>10</default>
-    </entry>
-    <entry name="iconSize" type="Int">
-      <default>-1</default>
-    </entry>
+    <entry name="url" type="String" />
+    <entry name="compact" type="Bool" />
+    <entry name="flat" type="Bool" />
+    <entry name="fontSize" type="Int" />
+    <entry name="iconSize" type="Int" />
     <entry name="widgetWidth" type="Double">
       <default>-1</default>
     </entry>
     <entry name="widgetHeight" type="Double">
       <default>-1</default>
     </entry>
-    <entry name="cellWidth" type="Double">
-      <default>200</default>
-    </entry>
-    <entry name="cellHeight" type="Double">
-      <default>60</default>
-    </entry>
-    <entry name="gridHorizontalSpacing" type="Double">
-      <default>-1</default>
-    </entry>
-    <entry name="gridVerticalSpacing" type="Double">
-      <default>-1</default>
-    </entry>
+    <entry name="cellWidth" type="Double" />
+    <entry name="cellHeight" type="Double" />
+    <entry name="gridHorizontalSpacing" type="Double" />
+    <entry name="gridVerticalSpacing" type="Double" />
   </group>
   <group name="Items">
     <entry name="items" type="String">

@@ -4,9 +4,13 @@ import QtQuick.Layouts
 
 import org.kde.kirigami as Kirigami
 import org.kde.kcmutils as KCM
+import org.kde.plasma.core as PlasmaCore
 
 KCM.SimpleKCM {
+    id: config
+    property bool cfg_firstStart
     property string cfg_url
+    property alias cfg_compact: compact.checked
     property alias cfg_flat: flat.checked
     property alias cfg_fontSize: fontSize.value
     property alias cfg_iconSize: iconSize.value
@@ -19,7 +23,62 @@ KCM.SimpleKCM {
 
     signal configurationChanged
 
+    states: [
+        State {
+            name: "planar-defaults"
+            when: config.cfg_firstStart && plasmoid.formFactor === PlasmaCore.Types.Planar
+            PropertyChanges 
+            {
+                config.cfg_firstStart: false
+                config.cfg_flat: false
+                config.cfg_fontSize: 10
+                config.cfg_iconSize: -1
+                config.cfg_widgetWidth: -1
+                config.cfg_widgetHeight: -1
+                config.cfg_cellWidth: 200
+                config.cfg_cellHeight: 60
+                config.cfg_gridHorizontalSpacing: -1
+                config.cfg_gridVerticalSpacing: -1
+            }
+        },
+        State {
+            name: "horizontal-defaults"
+            when: config.cfg_firstStart && plasmoid.formFactor === PlasmaCore.Types.Horizontal
+            PropertyChanges 
+            {
+                config.cfg_firstStart: false
+                config.cfg_flat: true
+                config.cfg_fontSize: 10
+                config.cfg_iconSize: 20
+                config.cfg_widgetWidth: -1
+                config.cfg_widgetHeight: -1
+                config.cfg_cellWidth: 86
+                config.cfg_cellHeight: 36
+                config.cfg_gridHorizontalSpacing: -1
+                config.cfg_gridVerticalSpacing: 0
+            }
+        },
+        State {
+            name: "vertical-defaults"
+            when: config.cfg_firstStart && plasmoid.formFactor === PlasmaCore.Types.Vertical
+            PropertyChanges 
+            {
+                config.cfg_firstStart: false
+                config.cfg_flat: true
+                config.cfg_fontSize: 6
+                config.cfg_iconSize: 20
+                config.cfg_widgetWidth: -1
+                config.cfg_widgetHeight: -1
+                config.cfg_cellWidth: 1000 // just a very large value so that the cell content is not clipped
+                config.cfg_cellHeight: 36
+                config.cfg_gridHorizontalSpacing: -1
+                config.cfg_gridVerticalSpacing: -1
+            }
+        }
+    ]
+
     Kirigami.FormLayout {
+
         Secrets {
             id: secrets
             property string token
@@ -89,6 +148,11 @@ KCM.SimpleKCM {
         }
 
         CheckBox {
+            id: compact
+            Kirigami.FormData.label: i18n("Compact representation (restart required)")
+        }
+
+        CheckBox {
             id: flat
             Kirigami.FormData.label: i18n("Flat entities")
         }
@@ -104,7 +168,7 @@ KCM.SimpleKCM {
         SpinBox {
             id: iconSize
             Layout.fillWidth: true
-            Kirigami.FormData.label: i18n("Icon size")
+            Kirigami.FormData.label: i18n("Icon size (-1 = default size)")
             from: -1
             to: 9999
         }
@@ -115,10 +179,7 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Widget width (-1 = default width)")
             from: -1
             to: 9999
-        }
-
-        Label {
-            text: i18n("Sets the width of the widget within a horizontal panel")
+            visible: plasmoid.formFactor === PlasmaCore.Types.Horizontal
         }
 
         SpinBox {
@@ -127,10 +188,7 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Widget height (-1 = default height)")
             from: -1
             to: 9999
-        }
-
-        Label {
-            text: i18n("Sets the height of the widget within a vertical panel")
+            visible: plasmoid.formFactor === PlasmaCore.Types.Vertical
         }
 
         SpinBox {
