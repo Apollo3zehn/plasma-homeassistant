@@ -31,10 +31,6 @@ PlasmaExtras.Representation {
             GridView {
                 interactive: false
                 clip: true
-                readonly property int dynamicColumnNumber: Math.min(Math.max(width / minItemWidth, 1), count)
-                readonly property int dynamicCellWidth: Math.max(width / dynamicColumnNumber, minItemWidth)
-                readonly property int minItemWidth: Kirigami.Units.iconSizes.enormous
-
                 cellWidth: plasmoid.configuration.cellWidth
                 cellHeight: plasmoid.configuration.cellHeight
                 model: itemModel
