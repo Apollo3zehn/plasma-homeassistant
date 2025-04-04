@@ -38,11 +38,12 @@ PlasmaExtras.Representation {
                 cellWidth: plasmoid.configuration.cellWidth
                 cellHeight: plasmoid.configuration.cellHeight
                 model: itemModel
-                delegate: EntityDelegateTile {
+                delegate: Entity {
                     readonly property var gridHorizontalSpacing: plasmoid.configuration.gridHorizontalSpacing
                     readonly property var gridVerticalSpacing: plasmoid.configuration.gridVerticalSpacing
                     width: plasmoid.configuration.cellWidth - (gridHorizontalSpacing < 0 ? Kirigami.Units.smallSpacing : gridHorizontalSpacing)
                     height: plasmoid.configuration.cellHeight - (gridVerticalSpacing < 0 ? Kirigami.Units.smallSpacing : gridVerticalSpacing)
+                    contentItem: EntityDelegateTile {}
                 }
             }
         }

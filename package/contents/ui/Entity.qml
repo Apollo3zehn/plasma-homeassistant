@@ -68,4 +68,19 @@ PlasmaComponents3.Button {
             }
         }
     ]
+
+    states: [
+        State {
+            name: "flat"
+            when: plasmoid.configuration.flat
+            PropertyChanges 
+            { 
+                target: control
+                leftPadding: 0
+                topPadding: 0
+                rightPadding: 0
+                bottomPadding: 0
+            }
+        }
+    ]
 }
