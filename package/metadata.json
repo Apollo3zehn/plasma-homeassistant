@@ -4,17 +4,17 @@
     "KPlugin": {
         "Authors": [
             {
-                "Name": "Krzysztof Korab"
+                "Name": "Apollo3zehn"
             }
         ],
         "Category": "Online Services",
-        "Description": "Home Assistant",
+        "Description": "Home Assistant Fork",
         "Icon": "go-home-symbolic",
-        "Id": "com.github.korapp.homeassistant",
+        "Id": "com.github.apollo3zehn.homeassistant",
         "License": "GPLv3",
-        "Name": "Home Assistant",
-        "Version": "0.1.0",
-        "Website": "https://github.com/korapp/plasma-homeassistant"
+        "Name": "Home Assistant Fork",
+        "Version": "1.3.0",
+        "Website": "https://github.com/apollo3zehn/plasma-homeassistant"
     },
     "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-StandAloneApp": true

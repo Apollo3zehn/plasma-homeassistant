@@ -1,4 +1,7 @@
-# Home Assistant Plasmoid
+> [!NOTE]
+> This is a fork of https://github.com/korapp/plasma-homeassistant with added functionality to make it more configurable so the Plasmoid can be placed in horizontal and vertical panels as well as on the desktop.
+
+# Home Assistant Plasmoid (Fork)
 
 [![plasma](https://img.shields.io/static/v1?message=KDE%20Store&color=54a3d8&logo=kde&logoColor=FFFFFF&label=)][kdestore]
 [![downloads](https://img.shields.io/github/downloads/korapp/plasma-homeassistant/total)][releases]
